@@ -64,7 +64,7 @@ def call (String nodeLabel, String androidHome, String gitRef=null, String build
 
         stage('Package') {
             switch (env.BRANCH_NAME) {
-                case ~/^(PR.*|feature\/.*|pullRequest)/:
+                case ~/^(PR.*|feature\/.*|pullRequest|master)/:
                     buildApks(conf.alphaReleases)
                     break
                 default:
