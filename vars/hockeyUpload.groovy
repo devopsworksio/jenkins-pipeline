@@ -1,5 +1,5 @@
 def call(String apkName, String appId, String notes=null) {
-    notes = "Built from: ${env.CHANGE_BRANCH}, developed by ${CHANGE_AUTHOR}"
+    notes = "Built from: ${env.CHANGE_BRANCH}, developed by ${env.CHANGE_AUTHOR}"
     withCredentials([string(credentialsId: 'HOCKEY_JENKINS_API_TOKEN', variable: 'HOCKEY_API_TOKEN')]) {
         echo " \033[1;32m Hockeyapp uploading ${apkName}   \033[0m"
         try {

@@ -16,7 +16,7 @@ def call(String context, Closure buildStep, Closure postBuildStep) {
     } catch (err) {
         updateGitHubCheck context, "$context failed!", "FAILURE"
         notifyJira "${env.CHANGE_AUTHOR}!  Build Failed! See ${env.BUILD_URL} for details.", "${env.JIRA_ISSUE}"
-        slackFeed "Step: ${context} ${currentBuild.result} for <${url} | ${change}> "
+        slackFeed "Step: ${context} ${currentBuild.result} for <${url} | ${change}> by ${env.CHANGE_AUTHOR}"
         currentBuild.result = 'FAILURE'
         ansiColor('xterm') {
             println "\033[1;31m[Error] Step ${context} failed! Reason: ${err}   \033[0m"
