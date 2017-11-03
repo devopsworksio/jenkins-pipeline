@@ -65,13 +65,7 @@ def call (String nodeLabel, String androidHome, String gitRef=null, String build
         stage('Package') {
             switch (env.BRANCH_NAME) {
                 case ~/^(PR.*|feature\/.*|pullRequest)/:
-                    buildApks(conf.betaReleases)
-                    break
-                case ~/(develop|v2)/:
-                    buildApks(conf.canaryReleases)
-                    break
-                case ~/^(release|hotfix).*/:
-                    buildApks(conf.canaryReleasesconf.signingKeys)
+                    buildApks(conf.alphaReleases)
                     break
                 default:
                     error("Branch name is not right for pushing APKs to hockey!")

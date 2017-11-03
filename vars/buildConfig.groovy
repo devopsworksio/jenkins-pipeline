@@ -7,7 +7,7 @@ class buildConfig implements Serializable {
     ]
 
 
-    def prReleases = [
+    def alphaReleases= [
             'uk-release': [
                     'label'     : 'build-uk-debug',
                     'gradleTask': 'assembleUkRelease',
