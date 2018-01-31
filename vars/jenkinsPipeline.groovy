@@ -2,7 +2,7 @@ def call (String nodeLabel, String androidHome, String gitRef=null, String build
 
     env.NODE_LABEL = nodeLabel
     env.ANDROID_HOME = androidHome
-    env.GROOVY = "/home/jenkins/tools/groovy/bin/groovy"
+    env.GROOVY = "/home/jenkins/tools/groovy/bin/gradle"
 
     properties([disableConcurrentBuilds(), [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '7', artifactNumToKeepStr: '20', daysToKeepStr: '20', numToKeepStr: '20']]]);
     def common = new common(steps, env)
