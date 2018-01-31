@@ -1,7 +1,7 @@
 def call(Map releases, Map signingKeys=[:]) {
     def extraArgs = ""
     def builds = releases.collectEntries { it ->
-        def gradleStuff = "./gradlew ${it.value.gradleTask} ${env.GRADLE_PARAMS} -PjenkinsFastDexguardBuildsEnabled ${extraArgs}"
+        def gradleStuff = "${env.GROOVY} ${it.value.gradleTask} ${env.GRADLE_PARAMS} -PjenkinsFastDexguardBuildsEnabled ${extraArgs}"
         [(it.value.label): {
             node(env.NODE_LABEL) {
                 step([$class: 'WsCleanup', notFailBuild: true])

@@ -3,7 +3,7 @@ def call(boolean runMainTestsOnSecondaryVariants) {
         node(env.NODE_LABEL) {
             prepareWorkspace()
             stepWithGithubStatus('Unit Tests', {
-                sh "./gradlew testUkReleaseUnitTestCoverage -PrunMainTestsForSecondaryVariants=${runMainTestsOnSecondaryVariants.toString()} ${env.GRADLE_PARAMS}"
+                sh "${env.GROOVY} testUkReleaseUnitTestCoverage -PrunMainTestsForSecondaryVariants=${runMainTestsOnSecondaryVariants.toString()} ${env.GRADLE_PARAMS}"
             }, {
                 stash(name: 'junit-report', includes: '**/TEST*.xml', alllowEmpy: true)
                 stash(name: 'jacoco-exec', includes: '**/jacoco/*.exec', alllowEmpy: true)
