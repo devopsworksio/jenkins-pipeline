@@ -10,11 +10,12 @@ def call (String nodeLabel, String androidHome, String gitRef=null, String build
 
     ansiColor('xterm') {
         node(env.NODE_LABEL) {
+
             env.JAVA_HOME = tool name: 'Java8', type: 'jdk'
             env.JAVA7_HOME = env.JAVA_HOME
             env.GRADLE_PARAMS = conf.gradleArgs
             currentBuild.result = 'SUCCESS'
-
+            sh 'env | sort '
             updateGitHubCheck 'Jenkins Job', 'Running job...', 'PENDING'
 
             stage('Checkout') {
